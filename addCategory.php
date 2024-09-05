@@ -1,4 +1,5 @@
 <?php
+include('php/query.php');
 include('components/sidebar.php');
 include('components/navbar.php');
 ?>
@@ -187,24 +188,29 @@ include('components/navbar.php');
                   <div class="border p-3 rounded">
                   <h6 class="mb-0 text-uppercase">Category Form</h6>
                   <hr>
-                  <form class="row g-3">
+                  <form class="row g-3" method="post" enctype="multipart/form-data">
                     <div class="col-12">
                       <label class="form-label">Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="cName" value="<?php echo $cName?>" class="form-control">
+                     <small class="text-danger"><?php echo $cNameErr?></small>
+
                     </div>
                     <div class="col-12">
                       <label class="form-label">Description</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="cDes" value="<?php echo $cDes?>" class="form-control">
+                     <small class="text-danger"><?php echo $cDesErr?></small>
+
                     </div>
                     <div class="col-12">
-                      <label class="form-label">Message</label>
-                      <input type="file" class="form-control">
+                      <label class="form-label">Image</label>
+                    <input type="file" name="cImg" value="<?php echo $cImg?>" class="form-control">
+                    <small class="text-danger"><?php echo $cImgErr?></small>
                     </div>
                     
                     </div>
                     <div class="col-12">
                       <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Add Category</button>
+                        <button type="submit" class="btn btn-primary" name="addCategory">Add Category</button>
                       </div>
                     </div>
                   </form>

@@ -1,4 +1,5 @@
 <?php
+include('php/query.php');
 include('components/sidebar.php');
 include('components/navbar.php');
 
