@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2024 at 12:53 PM
+-- Generation Time: Sep 08, 2024 at 09:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,12 +39,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `des`, `image`) VALUES
-(1, 'daniyal', 'abc', '61qNNcyoGqL._AC_SY445_.jpg'),
-(2, 'daniyal', 'sasas', 'istockphoto-1439425791-612x612.jpg'),
-(3, 'daniyal', 'sasas', '61qNNcyoGqL._AC_SY445_.jpg'),
-(4, '878787', 'jhjh', '61qNNcyoGqL._AC_SY445_.jpg'),
-(5, 'ali', 'jhjh', '61qNNcyoGqL._AC_SY445_.jpg'),
-(6, 'daniyal', 'sasas', '61qNNcyoGqL._AC_SY445_.jpg');
+(2, 'daniyal', 'abc', 'istockphoto-1439425791-612x612.jpg'),
+(7, 'ali', 'abc', 'ecommerce.png');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +60,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
