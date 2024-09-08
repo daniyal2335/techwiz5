@@ -2,6 +2,13 @@
 include('php/query.php');
 include('components/sidebar.php');
 include('components/navbar.php');
+if(isset($_GET['cid'])){
+    $id=$_GET['cid'];
+    $query=$pdo->prepare("select * from category where id=:cid");
+    $query->bindParam('cid',$id);
+    $query->execute();
+    $cat=$query->fetch(PDO::FETCH_ASSOC);
+    }
 ?>
 
 
@@ -186,31 +193,32 @@ include('components/navbar.php');
               <div class="card">
                 <div class="card-body">
                   <div class="border p-3 rounded">
-                  <h6 class="mb-0 text-uppercase">Category Form</h6>
+                  <h6 class="mb-0 text-uppercase">Category Edit Form</h6>
                   <hr>
                   <form class="row g-3" method="post" enctype="multipart/form-data">
                     <div class="col-12">
                       <label class="form-label">Name</label>
-                      <input type="text" name="cName" value="<?php echo $catName?>" class="form-control">
-                     <small class="text-danger"><?php echo $catNameErr?></small>
-
+                      <input type="text" value="<?php echo $cat['name']?><?php echo $cName?>" name="cName" class="form-control">
+                      <small class="text-danger"><?php echo $cNameErr?></small>
+                       
                     </div>
                     <div class="col-12">
                       <label class="form-label">Description</label>
-                      <input type="text" name="cDes" value="<?php echo $catDes?>" class="form-control">
-                     <small class="text-danger"><?php echo $catDesErr?></small>
-
+                      <input type="text"  value="<?php echo $cat['des']?><?php echo $cDes?>" name="cDes" class="form-control">
+                      <small class="text-danger"><?php echo $cDesErr?></small>
+                       
                     </div>
                     <div class="col-12">
                       <label class="form-label">Image</label>
-                    <input type="file" name="cImg" value="<?php echo $catImg?>" class="form-control">
-                    <small class="text-danger"><?php echo $catImgErr?></small>
+                    <input type="file"  value="<?php echo $cat['image']?><?php echo $cImageName?>"name="cImg" class="form-control">
+                    <small class="text-danger"><?php echo $cImgErr?></small>
+
                     </div>
                     
                     </div>
                     <div class="col-12">
                       <div class="d-grid">
-                        <button type="submit" class="btn btn-primary" name="addCategory">Add Category</button>
+                        <button type="submit" class="btn btn-primary" name="updateCategory">update Category</button>
                       </div>
                     </div>
                   </form>

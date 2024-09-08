@@ -245,6 +245,14 @@
                 <ion-icon name="ellipse-outline"></ion-icon>Add Category
               </a>
             </li>
+            <li> <a href="editCategory.php">
+                <ion-icon name="ellipse-outline"></ion-icon>Edit Category
+              </a>
+            </li>
+            <li> <a href="addProduct.php">
+                <ion-icon name="ellipse-outline"></ion-icon>Add Product
+              </a>
+            </li>
             <li> <a href="form-validations.html">
                 <ion-icon name="ellipse-outline"></ion-icon>Form Validation
               </a>
@@ -279,8 +287,12 @@
                 <ion-icon name="ellipse-outline"></ion-icon>Basic Table
               </a>
             </li>
-            <li> <a href="table-advance-tables.html">
-                <ion-icon name="ellipse-outline"></ion-icon>Advance Tables
+            <li> <a href="viewCategory.php">
+                <ion-icon name="ellipse-outline"></ion-icon>view Category
+              </a>
+            </li>
+            <li> <a href="viewProduct.php">
+                <ion-icon name="ellipse-outline"></ion-icon>view Product
               </a>
             </li>
             <li> <a href="table-datatable.html">
