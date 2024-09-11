@@ -226,6 +226,7 @@ include('components/navbar.php');
                     </div>
                     
                     </div>
+                    
                     <div class="col-12">
                      <label class="form-label">Select category</label>
                      <select class="form-control" name="cId" value="<?php echo $pCid?>"  id="">

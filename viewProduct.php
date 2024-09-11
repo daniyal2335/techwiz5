@@ -47,7 +47,7 @@ include('components/navbar.php');
                    <h5 class="mb-0">Product list</h5>
                     <form class="ms-auto position-relative">
                       <div class="position-absolute top-50 translate-middle-y search-icon px-3"><ion-icon name="search-sharp"></ion-icon></div>
-                      <input class="form-control ps-5" type="text" placeholder="search">
+                      <input class="form-control ps-5" type="text" id="search" placeholder="search">
                     </form>
                 </div>
                 <div class="table-responsive mt-3">
@@ -66,31 +66,7 @@ include('components/navbar.php');
                       </tr>
                     </thead>
                     <tbody>
-                    <?php
-                               $query=$pdo->query("select products .*,category.name as cName,c_id as catId from products inner join category on 
-                               products.c_id=category.id");
-                               $allProducts=$query->fetchAll(PDO::FETCH_ASSOC);
-                               foreach ($allProducts as $pdt) {
-                                
-                               ?>
-                      <tr>
-                       <!-- <td>1</td> -->
-                        <td>
-                          <div class="d-flex align-items-center gap-3 cursor-pointer">
-                             <!-- <img src="assets/images/avatars/01.png" class="rounded-circle" width="44" height="44" alt=""> -->
-                             <div class="">
-                               <p class="mb-0"><?php echo $pdt['name']?></p>
-                             </div>
-                          </div>
-                        </td>
-                        <td><?php echo $pdt['des']?></td>
-                        <td><?php echo $pdt['price']?></td>
-                        <td><?php echo $pdt['qty']?></td>
-                        <td><?php echo $pdt['pr_barcode']?></td>
-                        <td><?php echo $pdt['cName']?></td>
-                        <td><img height="50px" src="img/<?php echo $pdt ['image']?>" alt=""></td>
-                        <td><a href="editproduct.php?pid=<?php echo $pdt['id']?>" class="btn btn-info">Edit</a></td>
-                        <td><a href="?pdid=<?php echo $pdt['id']?>" class="btn btn-danger">Delete</a></td>
+                    
                         <td>
                           <div class="table-actions d-flex align-items-center gap-3 fs-6">
                             <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Views" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
@@ -98,10 +74,7 @@ include('components/navbar.php');
                             <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Delete" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
                           </div>
                         </td>
-                      </tr>
-                     <?php
-                       }
-                       ?>
+                     
                     </table>
                 </div>
               </div>
@@ -208,3 +181,39 @@ include('components/navbar.php');
 
 <!-- Mirrored from codervent.com/fobia/demo/ltr/table-advance-tables.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Sep 2024 10:31:52 GMT -->
 </html>
+
+//seraching Work
+
+<script>
+      $(document).ready(function(){
+        let $allProducts = () =>{
+                $.ajax({
+                url : "php/productajax.php",
+                type : "get",
+                success :function(abc){
+                   $("tbody").html(abc);   
+                }
+            }) 
+            }
+            $allProducts();
+     $("#search").keyup(function(){
+       let input = $(this).val();
+         //alert(input);
+        if(input!="" ){
+            $.ajax({
+            url : "php/query.php",
+            type : "post",
+            data : {pdt:input},
+            success :function(data){
+               $("tbody").html(data);   
+            }
+        })
+    }
+    else{
+        $allProducts();
+    }
+
+
+   });
+ });
+</script>

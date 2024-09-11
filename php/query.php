@@ -361,6 +361,62 @@ if(isset($_GET['pdid'])){
     </script>";
 
 }
+
+// search work view category adminpanel
+if(isset($_POST['cat'])){
+    $val = $_POST['cat'];
+    $query = $pdo->prepare("select * from category Where name LIKE :val");
+    $val ="%$val%";
+    $query->bindParam('val',$val);
+    $query->execute();
+    $allCategories =$query->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($allCategories as $cat) {
+        ?>         
+
+                         <tr>
+                            <td><?php echo $cat['name']?></td>
+                            <td><?php echo $cat['des']?></td>
+                            <td><img height="50px" src="../assets/img/<?php echo $cat['image']?>" alt=""></td>
+                            <td><a href="editCategory.php?cid=<?php echo $cat['id']?>" class="btn btn-info">Edit</a></td>
+                            <td><a href="?cdid=<?php echo $cat['id']?>" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                  <?php  
+                   }
+                   exit();
+  
+             }
+
+
+ // search work view products adminpanel
+if(isset($_POST['pdt'])){
+    $val = $_POST['pdt'];
+    $sort_order = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'ASC'; // Default is ASC
+    $sort_order = ($sort_order == 'DESC') ? 'DESC' : 'ASC';//validate sorting order
+    $query = $pdo->prepare("select products .*,category.name as cName,c_id as catId from products inner join category on products.c_id=category.id where products.name LIKE :val
+    ORDER BY products.price $sort_order");
+    $val ="%$val%";
+    $query->bindParam('val',$val);
+    $query->execute();
+    $allProducts =$query->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($allProducts as $pdt) {
+        ?>         
+
+                         <tr>
+                            <td><?php echo $pdt['name']?></td>
+                            <td><?php echo $pdt['des']?></td>
+                            <td><?php echo $pdt['price']?></td>
+                            <td><?php echo $pdt['qty']?></td>
+                            <td><?php echo $pdt['pr_barcode']?></td>
+                            <td><?php echo $pdt['cName']?></td>
+                            <td><img height="50px" src="../assets/img/<?php echo $pdt['image']?>" alt=""></td>
+                            <td><a href="editProduct.php?pid=<?php echo $pdt['id']?>" class="btn btn-info">Edit</a></td>
+                            <td><a href="?pdid=<?php echo $pdt['id']?>" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                  <?php  
+                   }
+                   exit();
+  
+             }
 ?>
 
 
