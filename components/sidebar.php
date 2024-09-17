@@ -245,10 +245,10 @@
                 <ion-icon name="ellipse-outline"></ion-icon>Add Category
               </a>
             </li>
-            <li> <a href="editCategory.php">
+            <!-- <li> <a href="editCategory.php">
                 <ion-icon name="ellipse-outline"></ion-icon>Edit Category
               </a>
-            </li>
+            </li> -->
             <li> <a href="addProduct.php">
                 <ion-icon name="ellipse-outline"></ion-icon>Add Product
               </a>

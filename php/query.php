@@ -390,10 +390,8 @@ if(isset($_POST['cat'])){
  // search work view products adminpanel
 if(isset($_POST['pdt'])){
     $val = $_POST['pdt'];
-    $sort_order = isset($_POST['sort_order']) ? $_POST['sort_order'] : 'ASC'; // Default is ASC
-    $sort_order = ($sort_order == 'DESC') ? 'DESC' : 'ASC';//validate sorting order
-    $query = $pdo->prepare("select products .*,category.name as cName,c_id as catId from products inner join category on products.c_id=category.id where products.name LIKE :val
-    ORDER BY products.price $sort_order");
+
+    $query = $pdo->prepare("select products .*,category.name as cName,c_id as catId from products inner join category on products.c_id=category.id where products.name LIKE :val");
     $val ="%$val%";
     $query->bindParam('val',$val);
     $query->execute();
